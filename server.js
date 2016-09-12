@@ -31,20 +31,19 @@ map_files.forEach(function (mapFile) {
 
 net.createServer(function (socket) {
 
-    console.log("Socket Connected")
-    socket.on('error', function (err) {
-        console.log("Socket Error" + err.toString());
-    });
+    console.log("Socket Connected");
+    // Get client.js file
+    var c_inst = new require('./client.js');
+    // Make new instance of it
+    var thisClient = new c_inst();
 
-    socket.on('end', function () {
-        console.log("Socket End");
+    // Adding client socket
+    thisClient.socket = socket;
+    thisClient.initiate();
 
-    });
-
-    socket.on('data', function (data) {
-        console.log("Socket Data "+data.toString());
-
-    });
+    socket.on('error', thisClient.error);
+    socket.on('end', thisClient.end);
+    socket.on('data', thisClient.data);
 
 }).listen(config.port);
 
