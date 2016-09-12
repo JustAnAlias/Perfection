@@ -10,7 +10,11 @@ module.exports = function () {
     // Objects will be added at runtime
     
     this.initiate = function () {
-        
+        var client = this;
+
+        // Handshake packet
+        client.socket.write(packet.build(["Hello", now().toString]))
+        console.log("Client Initiated");
     }
     
     this.data = function (data) {
