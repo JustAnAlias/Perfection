@@ -17,7 +17,7 @@ var common_conf = {
         maps: __dirname + "\\Game Data\\" + "Maps\\",
 
     },
-    starting_zone: "rm_map_home"
+    starting_zone: "rl_map_home"
 
 };
 

@@ -23,10 +23,11 @@ maps = {};
 var map_files = fs.readdirSync(config.data_path.maps);
 map_files.forEach(function (mapFile) {
     console.log('Loading Map:' + mapFile);
-    var map = require(config.data_path + mapFile);
+    var map = require(config.data_path.maps + mapFile);
     maps[map.room] = map
 });
 
+console.log(maps);
 
 
 // Load Data Models
